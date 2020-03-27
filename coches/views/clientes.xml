@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <record id="clientes_coches_action" model="ir.actions.act_window">
+        <field name="name">Clientes</field>
+        <field name="res_model">clientes.coches</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem name="Concesionario" id="concesionario_menu" />
+     <menuitem name="Clientes" id="clientes_coches_menu" parent="concesionario_menu" action="clientes_coches_action"/>
+
+        <!-- Form View -->
+        <record id="clientes_coches_view_form" model="ir.ui.view">
+        <field name="name">Formulario Lista Clientes</field>
+        <field name="model">clientes.coches</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="dni"/>
+                    <field name="domicilio"/>
+                    <field name="teléfono"/>
+                    <field name="edad"/>
+                    <field name="descuentomarca"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Tree(list) View -->
+    <record id="clientes_coches_view_tree" model="ir.ui.view">
+        <field name="name">Lista Clientes</field>
+        <field name="model">clientes.coches</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="dni"/>
+                    <field name="domicilio"/>
+                    <field name="teléfono"/>
+                    <field name="edad"/>
+                    <field name="descuentomarca"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

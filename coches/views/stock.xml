@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <record id="stock_coches_action" model="ir.actions.act_window">
+        <field name="name">Coches en stock</field>
+        <field name="res_model">stock.coches</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+     <menuitem name="Concesionario" id="concesionario_menu" />
+     <menuitem name="Coches en stock" id="stock_coches_menu" parent="concesionario_menu" action="stock_coches_action"/>
+
+        <!-- Form View -->
+        <record id="stock_coches_view_form" model="ir.ui.view">
+        <field name="name">Formulario Coches Stock</field>
+        <field name="model">stock.coches</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="marca"/>
+                    <field name="modelo"/>
+                    <field name="precio"/>
+                    <field name="color"/>
+                    <field name="extras"/>
+                    <field name="CV"/>
+                    <field name="cilindrada"/>
+                    <field name="state"/>
+                    <field name="año"/>
+                    <field name="img_coche" widget="image" class="oe_avatar"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Tree(list) View -->
+    <record id="stock_coches_view_tree" model="ir.ui.view">
+        <field name="name">Stock</field>
+        <field name="model">stock.coches</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="marca"/>
+                    <field name="modelo"/>
+                    <field name="precio"/>
+                    <field name="color"/>
+                    <field name="extras"/>
+                    <field name="CV"/>
+                    <field name="cilindrada"/>
+                    <field name="state"/>
+                    <field name="año"/>
+                    <field name="img_coche" widget="image" class="oe_avatar"/>
+            </tree>
+        </field>
+    </record>
+
+
+  <!-- Kanban View -->  
+   
+   <record id="stock_coches_view_kanban" model="ir.ui.view">
+        <field name="name">Lista Stock Kanban</field>
+        <field name="model">stock.coches</field>
+        <field name="arch" type="xml">            
+            <kanban default_group_by="marca">
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="precio"/>
+                <field name="color"/>
+                <field name="extras"/>
+                <field name="CV"/>
+                <field name="cilindrada"/>
+                <field name="marca"/> 
+                <field name="año"/> 
+                <field name="id"/>
+                <field name="img_coche"/>          
+                <templates>
+                    <t t-name="kanban-box">                    
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <t t-if="record.img_coche.raw_value">                                    
+                                    <div class="o_kanban_image_fill_left d-none d-md-block">
+                                        <img class="o_kanban_image_inner_pic" style="max-height: 100px;max-width: 100px" t-att-alt="record.id.value" t-att-src="kanban_image('stock.coches', 'img_coche', record.id.raw_value)"/>
+                                    </div>
+                            </t>                        
+                        </div>
+                    </t>
+                </templates>
+            </kanban>        
+        </field>
+    </record>
+    
+</odoo>

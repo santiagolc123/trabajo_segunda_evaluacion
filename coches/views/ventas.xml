@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <record id="ventas_coches_action" model="ir.actions.act_window">
+        <field name="name">Ventas</field>
+        <field name="res_model">ventas.coches</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem name="Concesionario" id="concesionario_menu" />
+     <menuitem name="Ventas" id="ventas_coches_menu" parent="concesionario_menu" action="ventas_coches_action"/>
+
+        <!-- Form View -->
+        <record id="ventas_coches_view_form" model="ir.ui.view">
+        <field name="name">Formulario Lista Coches</field>
+        <field name="model">ventas.coches</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="marca"/>
+                    <field name="modelo"/>
+                    <field name="state"/>
+                    <field name="infoextra"/>
+                    <field name="fecha_venta"/>
+                    <field name="fecha_now"/>
+                    <field name="precio"/> 
+                    <field name="iva"/>
+                    <field name="precio_iva"/>
+                    <field name="comprador"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Tree(list) View -->
+    <record id="ventas_coches_view_tree" model="ir.ui.view">
+        <field name="name">Lista Automóviles</field>
+        <field name="model">ventas.coches</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="marca"/>
+                    <field name="modelo"/>
+                    <field name="state"/>
+                    <field name="infoextra"/>
+                    <field name="fecha_venta"/>
+                    <field name="fecha_now"/>
+                    <field name="precio"/> 
+                    <field name="iva"/>
+                    <field name="precio_iva"/>
+                    <field name="comprador"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
